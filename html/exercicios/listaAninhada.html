@@ -1,0 +1,57 @@
+<h1>Projeto</h1>
+
+<ul class="tree">
+        <ul>
+            <div id="conteudo" onclick="ocultaMenu('todosItens')" >Backend</div>
+            <li class="todosItens">
+                <div onclick="ocultaMenu('subMenu1')" >app</div>
+                <ul class="subMenu1" >
+                    <li >produto.js</li>
+                    <li >usuario.js</li>
+                    <li >venda.js</li>
+    
+                </ul>
+            </li>
+            <li class="todosItens">
+                <div onclick="ocultaMenu('subMenu2')" >Config</div>
+                <ul class="subMenu2">
+                        <li>bancos.js</li>
+                        <li>rotas.js</li>
+                        <li>servidor.js</li>
+        
+                    </ul>
+                </li>
+        </ul>
+    </li>
+    <li>
+        <div onclick="ocultaMenu('todosItem2')" >frontEnd</div>
+        <ul>
+            <li class = "todosItem2">
+                <div onclick="ocultaMenu('subMenu3')" >Public</div>
+                <ul class = "subMenu3">
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script>
+    function ocultaMenu(classe){
+        
+        respostas = document.getElementsByClassName(classe); //recupera todos elementos da classe faq
+        for (var i = 0; i < respostas.length; i++) { // coloca todos eles invisiveis
+            if (respostas[i].style.display !== 'none'){
+                respostas[i].style.display = 'none'; 
+            }else{
+                respostas[i].style.display = 'inherit'; 
+            }
+            
+    }
+
+}
+
+
+</script>

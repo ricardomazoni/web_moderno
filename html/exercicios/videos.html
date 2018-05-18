@@ -1,0 +1,58 @@
+<video id="meuVideo" width="800" height="450" controls autoplay controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta a tag de videos    
+</video>
+
+<div wm-progresso="meuVideo" class="progresso">
+    <div></div>
+</div>
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+<style>
+    .progresso{
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        /* ficar de forma espaçado */
+        margin: 20px; 
+    }
+    .progresso > div{
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        width:30%;
+    }
+</style>
+
+<script>
+    function configurarVideo(id){
+        // pegando a tag video pelo id
+        const video = document.getElementById(id)
+        // desabilitando para não fazer download atraves do evento
+        // referente ao contexto da propriedade
+        video.oncontextmenu = ()=>false
+
+        // Selecionar as tag wm-play e passando o valor e o 
+        // ID
+
+        document.querySelector(`[wm-play=${id}]`).onclick = e => video.play()
+        document.querySelector(`[wm-pause=${id}]`).onclick = e => video.pause()
+
+        // Pegando o intervalo de controle de execução do video
+        setInterval(()=>{
+            const percentual = (video.currentTime / video.duration)*100
+            const valorDiv   = document.querySelector(`[wm-progresso=${id}]>div`)
+            // Pega o percentual
+            valorDiv.style.width = `${percentual}%`
+            // Mostra somete a progressão ocorrendo
+            valorDiv.innerHTML = `${percentual.toFixed(1)}%`
+        },500)
+
+
+
+    }
+    configurarVideo('meuVideo')
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Exercicios Html</title>
+    <style>
+        #conteudo{
+            padding: 30px 0px;
+        }
+    
+    </style>
+</head>
+<body>
+    <header>
+        Exercicios de Html
+    </header>
+    <nav>
+        <a href wm-nav="exercicios/teste.html">00- Teste</a>
+        |
+        <a href wm-nav="exercicios/temp.html">Chama Temp</a>
+        |
+        <a href wm-nav="exercicios/texto.html">Texto</a>
+        |
+        <a href wm-nav="exercicios/listas.html">Listas</a>
+        |
+        <a href wm-nav="exercicios/links.html">Links</a>
+        |
+        <a href wm-nav="exercicios/tabela.html">Tabelas</a>
+        |
+        <a href wm-nav="exercicios/form/form.html">Formulario</a>
+        |
+        <a href wm-nav="exercicios/imagens.html">Imagens</a>
+        |
+        <a href wm-nav="exercicios/videos.html">Videos</a>
+        |
+        <a href wm-nav="exercicios/tagsNaoVisuais.html">Tags</a>
+        
+        
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        <br>
+        Curso de web Moderno
+    </footer>
+    <script>
+        document.querySelectorAll('[wm-nav]').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+            link.onclick = function(e){
+                e.preventDefault()
+                // requisao ajaxa para receber o retorno da pagina
+                // e reinderizar na pagina corrente    
+                fetch(link.getAttribute('wm-nav'))
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+
+            }            
+        })
+    </script>
+</body>
+</html>
