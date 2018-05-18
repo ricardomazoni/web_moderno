@@ -10,7 +10,39 @@
     <div>Segundo</div>
     <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
     <script>              
-        // ...
+        /**
+            querySelector -> é preciso especificar qdo for id # ou . classe
+        */
+        document.querySelector('#primeiro').classList.add('destaque')
+
+        /** usando o querySelectorAll para passar o elemento css para todas as tag's 
+            no Dom da pagina retorna um nodeList, porem ha somente forEach,
+             outras funcoes como map e reduce nao estao presentes
+        */
+
+
+        const selecionar = seletor =>
+            document.querySelectorAll(seletor).forEach(e => e.classList.add('destaque'))
+
+        selecionar('div')
+        
+        const desSelecionar = seletor =>
+            document.querySelectorAll(seletor).forEach(e => e.classList.remove('destaque'))
+        
+        desSelecionar('*')
+
+        selecionar('.terceiro.ultimo')
+        selecionar('#primeiro')
+        selecionar('div')
+        desSelecionar('*')
+
+        /**passando o pseudo da class 
+            Nesse caso não selecionara o primeiro e sim
+            somente os demais
+            negação em cima do seletor
+        */
+        selecionar(':not(#primeiro)')
+
     </script>
 </body>
 </html>
